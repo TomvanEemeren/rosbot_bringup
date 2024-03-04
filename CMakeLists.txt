@@ -9,6 +9,8 @@ project(rosbot_bringup)
 # # is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
     sensor_msgs
+    geometry_msgs
+    tf
     roscpp)
 
 # # System dependencies are found with CMake's conventions
@@ -140,6 +142,9 @@ target_link_libraries(bumper_emulator_node ${catkin_LIBRARIES})
 add_executable(battery_logger_node src/battery_logger.cpp)
 target_link_libraries(battery_logger_node ${catkin_LIBRARIES})
 
+add_executable(pose_tf_broadcaster_node src/pose_tf_broadcaster.cpp)
+target_link_libraries(pose_tf_broadcaster_node ${catkin_LIBRARIES})
+
 # # Rename C++ executable without prefix
 # # The above recommended prefix causes long target names, the following renames the
 # # target back to the shorter version for ease of user use
@@ -204,3 +209,4 @@ target_link_libraries(battery_logger_node ${catkin_LIBRARIES})
 
 # # Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
